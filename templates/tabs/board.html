@@ -1,0 +1,35 @@
+{%extends "base.html" %}
+{% block title %}ViewUsers{% endblock %}
+{% block content %}
+<br>
+<br>
+<h1 class=" text-center text-white">General Questions</h1>
+<br>
+<div class="containter-fluid text-center">
+
+    <br>
+    <hr>
+    <br>
+    <ul>
+        {% for list_of_posts in post_list %}
+        <li>
+            <hr>
+
+            <div class="container-fluid text-center text-white"
+                style="border: solid white;  width: 45%; color:black; background-color:#303642; height: 250px;">
+                <h2>Q: {{list_of_posts.title}}</h2>
+                <h4>{{list_of_posts.poster}}</h4>
+                <hr>
+                <h4 style="text-align: left;">{{list_of_posts.post_content}}</h4>
+            </div>
+
+        </li>
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+
+
+{% endblock %}

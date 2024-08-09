@@ -1,0 +1,54 @@
+{%extends "base.html" %}
+{% block title %}Support{% endblock %}
+{% block content %}
+
+
+
+<div class="container-fluid text-center text-white">
+    {% with messages = get_flashed_messages()%}
+    {% if messages %}
+    {% for msg in messages %}
+    <p class="text-white">{{msg}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="container-fluid"
+        style="width: 50%; background-color: rgba(255, 6, 6, 0.034); border-style: solid; border-color: rgba(255, 255, 255, 0.425); border-radius: 1%;">
+        <h1>We Appreciate Your Support!</h1>
+        <p>
+            At WAR Industries, we are passionate about creating unforgettable gaming experiences that push the
+            boundaries of
+            imagination and innovation. As an independent game studio, we rely on the support of our incredible
+            community to
+            bring our visions to life.
+
+            We invite you to join us on this exciting journey by donating to our studio. Your generous contributions
+            will
+            enable us to continue developing groundbreaking games, support our talented team, and bring our creative
+            dreams
+            to reality. Together, we can build extraordinary worlds and create unforgettable adventures.
+
+            Thank you for your support and belief in our mission. Every donation, no matter the size, makes a
+            significant
+            impact.
+        </p>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <form action="#" method="post">
+        <div class="form-group">
+            <input type="text" name="name" placeholder="Bill Billington"> <br>
+        </div>
+
+        <div class="form-group">
+            <input type="number" name="amount" min="0.01" step="0.01" max="2500" value="25.67" />
+            <input type="submit" name="submit" value="Enter">
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,154 @@
+{%extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="jumbotron" style="height:600px; background-color: #303642;">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" style="height:512px">
+            <div class="carousel-item active text-center">
+                <img src="{{url_for('static', filename='images/WARJumbo.png')}}" alt="SpaceStation.jpg">
+                <div class="carousel-caption" style="height:50px">
+                    <h5>Immersive Worlds, Endless Possibilities</h5>
+                </div>
+            </div>
+            <div class="carousel-item text-center">
+                <img src="{{url_for('static', filename='images/ruins.jpg')}}" class="img-fluid" alt="ruins.jpg">
+                <img src="{{url_for('static', filename='images/controlroom.jpg')}}" class="img-fluid" alt="ruins.jpg">
+                <div class="carousel-caption" style="background-color: #21252e9f; border-radius: 5%;">
+                    <h5>We Are The Future</h5>
+                    <p>Welcome to WAR Industries, where creativity and passion fuel our games! We are a dedicated
+                        team
+                        of
+                        developers and artists committed to delivering exceptional
+                        gaming experiences. Our goal is to create immersive worlds and engaging stories that
+                        captivate
+                        players of all kinds.
+
+                        Join us at WAR Industies and discover where your next adventure begins!</p>
+                </div>
+
+            </div>
+            <div class="carousel-item text-center">
+                <img src="{{url_for('static', filename='images/epic.jpg')}}" class="img-fluid" alt="ruins.jpg">
+                <img src="{{url_for('static', filename='images/spacefight.jpg')}}" class="img-fluid" alt="ruins.jpg">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Support Us!</h5>
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #21252e9f"
+                        href="https://www.linkedin.com/feed/" role="button"><i class="fab fa-linkedin-in"><img
+                                src="{{ url_for('static', filename='images/ln.png') }}"></i></a>
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #21252e9f"
+                        href="https://github.com/" role="button"><i class="fab fa-instagram"><img
+                                src="{{ url_for('static', filename='images/gh.png') }}" style="height:48px;"></i></a>
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #21252e9f"
+                        href="https://www.youtube.com/" role="button"><i class="fab fa-google"><img
+                                src="{{ url_for('static', filename='images/yt.png') }}"></i></a>
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #21252e9f"
+                        href="https://x.com/?lang=en" role="button"><i class="fab fa-twitter"><img
+                                src="{{ url_for('static', filename='images/tw.png') }}"></i></a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </button>
+    </div>
+</div>
+<div class="mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"
+    style="background-color: #303642; height: 800px;">
+    <div class="my-3 py-3">
+        <h2 class="display-5">Who We Are</h2>
+        <p class="lead">
+            At WAR Industries, our mission is to create immersive and exhilarating shooting games that <br>
+            captivate players with engaging narratives, stunning visuals, and innovative gameplay. We strive to push
+            the
+            <br>
+            boundaries of interactive entertainment, delivering unforgettable experiences that challenge, thrill,
+            and
+            <br>
+            inspire gamers around the world. . Our commitment is to deliver unforgettable, pulse-racing experiences
+            that
+            <br>
+            fuel your competitive spirit and keep you coming back for more. Join us on the battlefield and be part
+            of
+            <br>
+            the revolution in gaming excellence! <br>
+        </p>
+    </div>
+    <div class="box-shadow mx-auto"
+        style="width: 80%; height: 500px; background-color: #21252e; border-radius: 21px 21px 0 0;">
+        <img src="{{ url_for('static', filename='images/controlroom2.jpg') }}" style="border-radius: 1%;">
+    </div>
+</div>
+<div>
+    <div class="mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"
+        style="background-color: #21252e; height: 700px;">
+        <div class="my-3 py-3">
+            <h2 class="display-5">Descent</h2>
+            <p class="lead">
+                The World has fallen. The Dead have risen. Create your Character and survive... <br>
+                If you can.</p>
+        </div>
+        <div class="d-flex box-shadow mx-auto"
+            style="width: 80%; height: 500px; background-color: #303642; border-radius: 21px 21px 0 0;">
+            <div style="width: 50%;">
+                <a class="link" href="{{ url_for('descent')}}">
+                    <button type="button" class="btn btn-primary">Visit Descent</button>
+                </a>
+            </div>
+            <img src="{{ url_for('static', filename='images/Survivors.jpg') }}"
+                style="float: right; border-radius: 1%;">
+        </div>
+    </div>
+</div>
+<div class="mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"
+    style="background-color: #303642; height: 700px;">
+    <div class="my-3 py-3">
+        <h2 class="display-5">AfterMath</h2>
+        <p class="lead">Action Packed Arcade First Person shooter set in the aftermath of a Nuclear Apocalpyse.</p>
+        <p class="lead">Customize Your Characters Exactly How You Want Them.</p>
+        </p>
+    </div>
+    <div class="d-flex box-shadow mx-auto"
+        style="width: 80%; height: 500px; background-color: #21252e; border-radius: 21px 21px 0 0;">
+        <img src="{{ url_for('static', filename='images/WarNeverChanges.jpg') }}"
+            style="float: left; border-radius: 1%;">
+        <div style="width: 50%;">
+            <a class="link" href="{{ url_for('aftermath')}}">
+                <button type=" button" class="btn btn-primary">Visit AfterMath</button>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden"
+    style="background-color: #21252e; height:700px">
+    <div class="my-3 py-3">
+        <h2 class="display-5">Ruin Hunter</h2>
+        <p class="lead">Its 2500. Human's have spread across the galaxy and their petty wars have spread with them.
+            Little to the know, <br>
+            a new threat looms over them all that is more dangerous than anything they have ever faced.
+        </p>
+    </div>
+    <div class="d-flex box-shadow mx-auto"
+        style="width: 80%; height: 500px; background-color: #303642; border-radius: 21px 21px 0 0;">
+        <div style="width: 50%;">
+            <a class="link" href="{{ url_for('ruinhunter')}}">
+                <button type="button" class="btn btn-primary">Visit Ruin Hunter</button>
+            </a>
+        </div>
+        <img src="{{ url_for('static', filename='images/SpaceGirls.jpg') }}" style="float: right; border-radius: 1%;">
+    </div>
+</div>
+
+
+
+
+{% endblock %}

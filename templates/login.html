@@ -1,0 +1,21 @@
+{%extends "base.html" %}
+{% block title %}Login Page{% endblock%}
+
+
+{% block content %}
+{% with messages = get_flashed_messages()%}
+{% if messages %}
+{% for msg in messages %}
+<p>{{msg}}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<h1 class="text-center text-white">Sign Up for Email updates</h1>
+<form style="border: white solid; border-radius: 1%; width: 50%; background-color: #303642;"
+    class="container-fluid text-center" action="#" method="POST"><br>
+    <input type="text" name="username" placeholder="username"><br>
+    <input type="password" name="password" placeholder="password"><br><br>
+    <input type="submit" value="Enter" name="Button"><input type="submit" value="Create An Account"
+        name="Button"><br><br>
+</form><br>
+{% endblock %}
