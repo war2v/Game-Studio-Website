@@ -2,7 +2,7 @@ from flask import Flask, redirect, url_for, render_template, request, session
 from flask import flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta
-
+from BP_profile import profile
 
 app = Flask(__name__)
 app.secret_key = "key"
@@ -40,6 +40,8 @@ class users(db.Model):
     username = db.Column(db.String(100))
     email = db.Column(db.String(100))
     password = db.Column(db.String(100))
+    bio = db.Column(db.String(500))
+    pro_pic = db.Column(db.String( ))
 
 
     def __init__(self, username, email, password):
@@ -47,6 +49,7 @@ class users(db.Model):
         self.username = username
         self.email = email
         self.password = password
+        self.bio = ""
 
 
 @app.route("/")
@@ -126,11 +129,13 @@ def support():
 
 
 @app.route("/profile/", methods=["POST", "GET"])
-def profile():
+def profile() :
     email = None
     profile = session['profile']
     if "profile" in session:
         profile = session["profile"]
+        user = users.query.filter_by(username=profile).first()
+        bio = user.bio
 
         if request.method == "POST":
             email = request.form["email"]
@@ -140,7 +145,7 @@ def profile():
             if "email" in session:
                 email = session["email"]
 
-        return render_template("profile.html", profilename=profile, email=email, loginTab='Profile', logout="logout")
+        return render_template("profile.html", profilename=profile, email=email, loginTab='Profile', logout="logout", bio=bio)
     else:
         return redirect(url_for("login", loginTab='Login'))
     
@@ -149,6 +154,7 @@ def view():
     if "profile" in session:
         if session['profile'] == 'root':
             if request.method == "POST":
+                admin = ""
             
                 match request.form['delete']:
                     case 'deleteUser':
@@ -167,7 +173,9 @@ def view():
                         new_post = post(title, content, name)
                         db.session.add(new_post)
                         db.session.commit()
-            return render_template("view.html", loginTab='Profile', logout='logout', values=users.query.all(), post_info=post.query.all(), donation_info=donations.query.all())  
+            if session['profile'] == 'root':
+                admin = 'Admin Page'
+            return render_template("view.html", loginTab='Profile', logout='logout', values=users.query.all(), post_info=post.query.all(), donation_info=donations.query.all(), admin=admin)  
         else:
             return redirect(url_for('home'))
         
@@ -183,10 +191,11 @@ def edit_profile():
         found_user = users.query.filter_by(_id=session["id"]).first()
         found_user.username = session['profile'] = request.form['profilename']
         found_user.email = session['email'] = request.form['email']
+        found_user.bio = request.form['bio']
         db.session.commit()
-        return render_template("editprofile.html", _id=session["id"], profilename=session['profile'], email=session['email'], loginTab='Profile', logout="logout")
+        return render_template("editprofile.html", _id=session["id"], profilename=session['profile'], email=session['email'], loginTab='Profile', logout="logout", bio=found_user.bio)
     
-
+ 
 @app.route("/createProfile/", methods=["POST", "GET"])
 def create_account():
     if "profile" in session:
