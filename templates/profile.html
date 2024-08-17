@@ -1,17 +1,41 @@
 {%extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<div style="border-radius: 1%; border:solid white; background-color: #303642;" class="container text-white">
-    <h2>Username: {{ profilename }}</h2>
-    <hr>
-    <h2>Email: {{ email }}</h2>
-    <hr>
-    <h2>Bio</h2>
-    <hr>
-    <h3>{{ bio }}</h3>
-    <a href="{{url_for('edit_profile')}}">Edit Profile</a>
+<div class="container text-white text-center" style="border: solid white">
+    <h1>Welcome {{ profilename }}</h1>
+    <br>
+    <br>
+</div>
+<br>
+<br>
+<div style="border-radius: 1%; border:solid white; background-color: #303642;" class="container text-white d-flex">
+    <div class="container">
+        <br>
+        <img class="rounded-circle" style="border:solid white; width: 15rem; height: 15rem;"
+            src="{{url_for('static', filename='images/ship.jpg')}}">
+    </div>
+    <div class="container">
+        <br>
+        <div style="border: solid white; border-radius: 2%; background-color: rgb(82, 82, 85);">
+            <h4>Username</h4>
+            <h2>{{ profilename }}</h2>
+        </div>
+        <hr>
+        <div>
+            <h4>Email</h4>
+            <h2>{{ email }}</h2>
+        </div>
+        <hr>
+        <div>
+            <h4>Bio</h4>
+            <hr>
+            <h3>{{ bio }}</h3>
+        </div>
 
-    <a href="{{url_for('view')}}">{{ admin }}</a>
+
+        <a href="{{url_for('edit_profile')}}">Edit Profile</a>
+        <a href="{{url_for('view')}}">{{ admin }}</a>
+    </div>
 </div>
 <br>
 {% endblock %}

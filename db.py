@@ -2,7 +2,7 @@ from flask import Flask, redirect, url_for, render_template, request, session
 from flask import flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta
-from BP_profile import profile
+
 
 app = Flask(__name__)
 app.secret_key = "key"
