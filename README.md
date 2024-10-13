@@ -47,3 +47,4 @@ Werkzeug          3.0.3
 3. run db.py
 4. go to designated url in terminal
         
+![Screenshot 2024-10-13 090142](https://github.com/user-attachments/assets/2628c117-29ae-449a-9ac8-0ea64888606d)
