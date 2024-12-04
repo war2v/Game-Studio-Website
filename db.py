@@ -24,6 +24,11 @@ class post(db.Model):
         self.title = title
         self.poster = poster
 
+class comment(db.Model):
+    _id = db.Column("id", db.Integer, primary_key=True)
+    poster = db.Column(db.String(100))
+    comment = db.Column(db.String(100))
+
 class donations(db.Model):
     _id = db.Column("id", db.Integer, primary_key=True)
     name = db.Column(db.String(100))
@@ -91,11 +96,26 @@ def ruinhunter():
     
 @app.route("/community/", methods=["POST", "GET"])
 def community():
-    posts = post.query.all()
-    if "profile" in session:
-        return render_template("tabs/board.html", loginTab='Profile', logout="logout", post_list=posts, name=session['profile'])
+    
+    if request.method == "POST":
+        poster = request.form['poster']
+        title = request.form['question']
+        post_content = request.form['details']
+        in_post = post(title, post_content, poster)
+        db.session.add(in_post)
+        db.session.commit()
+        flash(f" Your question will be answered soon! {poster}!")
+        posts = post.query.all()
+        if "profile" in session:
+            return render_template("tabs/board.html", loginTab='Profile', logout="logout", post_list=posts, name=session['profile'])
+        else:
+            return render_template("tabs/board.html", loginTab='Login', post_list=posts, name="name")
     else:
-        return render_template("tabs/board.html", loginTab='Login', post_list=posts, name="name")
+        posts = post.query.all()
+        if "profile" in session:
+            return render_template("tabs/board.html", loginTab='Profile', logout="logout", post_list=posts, name=session['profile'])
+        else:
+            return render_template("tabs/board.html", loginTab='Login', post_list=posts, name="name")
     
     
 
@@ -149,7 +169,7 @@ def profile() :
     else:
         return redirect(url_for("login", loginTab='Login'))
     
-@app.route("/view/", methods=["POST", "GET"])
+@app.route("/admin/", methods=["POST", "GET"])
 def view():
     if "profile" in session:
         if session['profile'] == 'root':
